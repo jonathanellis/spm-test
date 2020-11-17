@@ -19,7 +19,8 @@ let package = Package(
             dependencies: [
                 .product(name: "SocketIO", package: "SocketIO"),
                 .target(name: "iProov", condition: .when(platforms: .some([.iOS]))),
-            ]
+            ],
+            path: "SwiftPM"
         ),
         .binaryTarget(
             name: "iProov",
