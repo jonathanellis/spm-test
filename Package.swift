@@ -7,7 +7,7 @@ let package = Package(
     products: [
         .library(
             name: "iProov",
-            targets: ["iProovWrapper"]
+            targets: ["iProov"]
         ),
         .library(
             name: "SocketIO",
@@ -22,14 +22,6 @@ let package = Package(
         .target(
             name: "SocketIO",
             dependencies: ["Starscream"]
-        ),
-        .target(
-            name: "iProovWrapper",
-            dependencies: [
-                .product(name: "SocketIO", package: "SocketIO"),
-                .target(name: "iProov", condition: .when(platforms: .some([.iOS]))),
-            ],
-            path: "SwiftPM"
         ),
         .binaryTarget(
             name: "iProov",
