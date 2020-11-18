@@ -11,7 +11,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "SocketIO", url: "https://github.com/iProov/socket.io-client-swift", .upToNextMajor(from: "15.2.0")),
+        .package(name: "SocketIO", url: "https://github.com/iProov/socket.io-client-swift", .branch("master")),
     ],
     targets: [
         .target(
