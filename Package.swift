@@ -7,12 +7,11 @@ let package = Package(
     products: [
         .library(
             name: "iProov",
-            type: .dynamic,
             targets: ["iProovWrapper"]
         ),
     ],
     dependencies: [
-        .package(name: "SocketIO", url: "https://github.com/socketio/socket.io-client-swift", .upToNextMajor(from: "15.2.0")),
+        socketIOPackage,
     ],
     targets: [
         .target(
@@ -28,5 +27,19 @@ let package = Package(
             url: "https://github.com/jonathanellis/spm-test/raw/master/iProov.xcframework.zip",
             checksum: "bff20f5281b89e407efd988e5435f45c9029a49b926409ab8c7170499ef0077b"
         ),
+    ]
+)
+
+let socketIOPackage = Package(
+    name: "SocketIO",
+    products: [
+        .library(name: "SocketIO", type: .dynamic, targets: ["SocketIO"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/daltoniam/Starscream", .upToNextMinor(from: "3.1.0")),
+    ],
+    targets: [
+        .target(name: "SocketIO", dependencies: ["Starscream"]),
+        .testTarget(name: "TestSocketIO", dependencies: ["SocketIO"]),
     ]
 )
