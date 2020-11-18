@@ -9,11 +9,20 @@ let package = Package(
             name: "iProov",
             targets: ["iProovWrapper"]
         ),
+        .library(
+            name: "SocketIO",
+            type: .dynamic,
+            targets: ["SocketIO"]
+        ),
     ],
     dependencies: [
-        .package(name: "SocketIO", url: "https://github.com/iProov/socket.io-client-swift", .branch("master")),
+        .package(url: "https://github.com/daltoniam/Starscream", .upToNextMinor(from: "3.1.0")),
     ],
     targets: [
+        .target(
+            name: "SocketIO",
+            dependencies: ["Starscream"]
+        ),
         .target(
             name: "iProovWrapper",
             dependencies: [
